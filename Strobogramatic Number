@@ -1,0 +1,42 @@
+import java.util.*;
+public class Rotate {
+    public static boolean isStrobogrammatic(int n){
+        String st = String.valueOf(n);
+        String st2 ="";
+        for(int i =st.length() -1;i>=0;i--){
+            if(st.charAt(i) == '0' || st.charAt(i) == '1' || st.charAt(i) == '8'){
+                st2 += st.charAt(i);
+            }
+            else if(st.charAt(i) == '6' ){
+                st2 += '9';
+            }
+            else if(st.charAt(i) == '9' ){
+                st2 += '6';
+            }
+            else{
+                return false;
+            }
+        }
+        if(st.equals(st2)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int s = (int) Math.pow(10, n - 1);
+        int e = (int) Math.pow(10, n);
+        List<Integer> l1 = new ArrayList<>();
+        for (int i = s; i < e; i++) {
+            if (isStrobogrammatic(i)) {
+                l1.add(i);
+            }
+        }
+        System.out.println(l1);
+
+    }
+}
