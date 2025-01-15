@@ -1,0 +1,37 @@
+package PEP;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+public class Implementation {
+
+    static int binarySearch(int[] arr, int target){
+        int n = arr.length;
+        int st = 0;
+        int end = n -1;
+        while(st<=end){
+            int mid = (st + end)/2;
+            if(arr[mid] == target){
+                return mid;
+            }
+            else if(arr[mid] > target){
+                end = mid -1;
+            }
+            else{
+                st = mid+1;
+            }
+        }
+        return -1;
+    }
+
+
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5,67,8,34,23,21,324,345,231,21,43,53,546};
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+        int target = 43;
+        System.out.println(binarySearch(arr,target));
+
+    }
+}
