@@ -1,0 +1,32 @@
+package PEP;
+
+import java.util.Arrays;
+
+public class Implementation_for_decreasing_array {
+
+    static int binarySearch(int[] arr, int target){
+        int n = arr.length;
+        int st = 0;
+        int end = n -1;
+        while(st<=end){
+            int mid = (st+end)/2;
+            if(arr[mid] == target){
+                return mid;
+            }
+            else if(arr[mid]<target){
+                end = mid -1;
+            }
+            else{
+                st = mid +1;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {8,7,6,5,4,3,2,1,0};
+        int target = 3;
+        System.out.println(binarySearch(arr,target));
+
+    }
+}
