@@ -1,0 +1,34 @@
+import java.util.*;
+public class SlidingWindow1 {
+
+    public static int maxfunc(int[] arr, int k){
+        if(arr.length < k){
+            int total = 0;
+            for(int i = 0;i<arr.length;i++){
+                total += arr[i];
+            }
+            return total;
+
+        }
+        int maxsum = 0;
+        for(int i = 0;i<k;i++){
+            maxsum += arr[i];
+        }
+        int curr = maxsum;
+        for(int i = k;i<arr.length;i++){
+            curr = curr - arr[i-k] + arr[i];
+            maxsum = Math.max(maxsum, curr);
+        }
+        return maxsum;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0;i<n;i++){
+            arr[i] = sc.nextInt();
+        }
+        int k = sc.nextInt();
+        System.out.println(maxfunc(arr,k));
+    }
+}
